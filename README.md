@@ -137,6 +137,7 @@ random number stream is not changed.
 ## Validation against CroCoDeEL 1.3.1
 
 All scripts are in `validation/`. Results are in `validation/results/`.
+Figures are drawn by `validation/make_figures.R`.
 Reference runs used CroCoDeEL 1.3.1 (Python 3.13, scikit-learn 1.9.1) and
 CroCoDeELR 0.1.0 (R 4.3.3) on Linux, on 2026-11-25. Datasets are the
 toy dataset of CroCoDeEL and public Meteor tables from the CroCoDeEL data
@@ -171,6 +172,14 @@ two-table modes, by comparing the output files byte by byte.
 | PRJNA352475 | 182 | 1762 | yes |
 | PRJEB6337 | 237 | 8935 | yes |
 
+![Exactness checks](man/figures/validation-exactness.png)
+
+*Figure 1.* (a) Probabilities of the default model in scikit-learn and in
+CroCoDeELR for 20,000 random feature vectors. (b, c) Probabilities and
+rates of every sample pair with a contamination line in the eight datasets
+above, with NumPy's RANSAC draws injected into CroCoDeELR. All points lie
+on the identity line.
+
 ### 3. Port as distributed (R random draws)
 
 **Criterion.** The R draws change which candidate line RANSAC picks for some
@@ -202,6 +211,18 @@ one extra Python seed):
 |---|---:|---:|---:|---:|---:|
 | R vs Py (seed 42) | 14,395 vs 14,329 | 14,295 | 0.991 | 0.29 | 4.1% |
 | Py seed 1 vs Py seed 42 | 14,358 vs 14,329 | 14,298 | 0.994 | 0.26 | 3.9% |
+
+![R random draws compared with the seed dependence of CroCoDeEL](man/figures/validation-random-draws.png)
+
+*Figure 2.* (a) Event Jaccard index against CroCoDeEL with its default
+seed 42, for CroCoDeELR (filled) and for CroCoDeEL with seeds 1, 2 and 3
+(open; MetaPhlAn4: seed 1 only). (b) Cumulative distribution of the
+relative rate difference of shared events, pooled over the Meteor datasets.
+About 55% (CroCoDeELR) and 58% (seeds) of shared events have exactly the
+same rate. (c, d) Probability
+of every pair with a contamination line in both runs, for CroCoDeELR and
+for CroCoDeEL with seed 1. Points off the diagonal are pairs whose RANSAC
+line changed. Both panels show a similar spread.
 
 **Result.**
 
@@ -266,6 +287,15 @@ datasets of section 3, with identical features (`compare_trained_models.R`).
 | PRJEB10878 | 86 | 89 | 0.90 | 0.92 | 0.990 |
 | PRJNA352475 | 95 | 85 | 0.77 | 0.84 | 0.973 |
 | PRJEB6337 | 200 | 186 | 0.80 | 0.83 | 0.977 |
+
+![Model training comparison](man/figures/validation-training.png)
+
+*Figure 3.* (a) Probabilities given by the retrained scikit-learn and
+ranger models to the 768 training pairs held out by both tools. (b)
+Contamination rates estimated by CroCoDeEL and CroCoDeELR for the
+contaminated training pairs. (c) Event Jaccard index on real data between
+the ranger and scikit-learn models (filled), and between the retrained
+scikit-learn model and the shipped default model (open).
 
 - The ranger and scikit-learn models agree on 77 to 97% of events.
 - Retraining with scikit-learn alone gives a model that also differs from the

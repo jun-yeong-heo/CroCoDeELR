@@ -19,6 +19,7 @@ Paths in the scripts point to the environment where the validation was run
 | `r_train_eval.R`, `python_train_eval.py` | Training on the official dataset; per-pair results |
 | `compare_training.R` | Classification and rate comparison on the training dataset |
 | `compare_trained_models.R` | ranger vs scikit-learn models on real data |
+| `make_figures.R` | Figures 1-3 of the main README (`man/figures/`) |
 | `simulate_training_table.R` | Simulated training table (first check, before the official dataset was available) |
 
 Python reference outputs were made with `crocodeel search_conta
