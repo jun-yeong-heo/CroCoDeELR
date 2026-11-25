@@ -1,0 +1,5 @@
+n	n_conta	accuracy	precision	recall	f1	auc
+python_own_test	2629	1762	0.9985	0.9989	0.9989	0.9989	0.9997
+r_own_test	2631	1758	0.9985	0.9994	0.9983	0.9989	1
+python_pipeline	768	529	0.9987	1	0.9981	0.9991	0.999
+r_pipeline	768	529	0.9987	1	0.9981	0.9991	0.9999

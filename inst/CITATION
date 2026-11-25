@@ -1,0 +1,14 @@
+bibentry(
+  bibtype = "Article",
+  header = "CroCoDeELR is an unofficial R port of CroCoDeEL. Please cite the original method:",
+  title = "{CroCoDeEL}: accurate control-free detection of cross-sample contamination in metagenomic data",
+  author = c(person("Lindsay", "Goulet"), person("others")),
+  journal = "Nature Communications",
+  year = "2026",
+  doi = "10.1038/s41467-026-72637-9",
+  textVersion = paste(
+    "Goulet L, et al. (2026).",
+    "CroCoDeEL: accurate control-free detection of cross-sample contamination in metagenomic data.",
+    "Nature Communications. doi:10.1038/s41467-026-72637-9"
+  )
+)
